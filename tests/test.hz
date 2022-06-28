@@ -1,0 +1,3 @@
+async fn Test(abc string) returntype null{
+    println(abc)
+}
