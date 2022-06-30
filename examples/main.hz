@@ -1,37 +1,22 @@
-import (
-    fetch from "hertz:http"
-    colorify from "package:hertz-colorify"
-    // abc: xyz syntax imports abc under namespace xyz
-    stripIndents: dedent from "hertz:formatting"
-    "hertz:arrayutils"
-)
+// Comments begin with a double slash
 
-secret API_KEY // Reads API_KEY from .env - unused here though
+// Variables can be declared using the let keyword, along with the apppriate type
 
-async fn reddit(subreddit string) returntype none {
-    // Named arguments
-    let resp any = await fetch(
-        url: `https://reddit.com/{subreddit}.json/top?t=month`
-        responseType: 'json'
-    )
-    let json any = await resp.json()
-    let children any = json.data.children;
-    let randomPost any = arrayutils.random(children)
+let hello string = 'Hello World'
 
-    let subName string = randomPost.data.subreddit_name_prefixed;
-       let postAuthor string = randomPost.data.author;
-       let postTitle string = randomPost.data.title;
-       let postSelfText string = randomPost.data.selftext;
-       let postScore number = randomPost.data.score;
+// Text can be logged to the console using the println function
+println(hello)
 
-    println(
-        dedent(
-            `
-            In sub {colorify.green(subName)} by {colorify.blue(postAuthor)}
-            {'_'.repeat(20)} {postTitle} {'_'.repeat(20)}
-            Score: {colorify.yellow(postScore)}
-            
-            {postSelfText}
-        `)
-    )
+// Template literals can be used as follows
+let a number = 1
+let b number = 2
+
+println(`The sum of {a} and {b} is {a + b}`)
+
+// Booleans work too!
+let isTrue boolean = true
+
+// Functions can be declared using the fn keyword
+fn isEven(num number) returntype boolean {
+    return num % 2 == 0
 }
