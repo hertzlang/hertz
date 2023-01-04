@@ -1,1 +1,6 @@
 package lexer
+
+
+var (
+	ADD = "+"
+)
